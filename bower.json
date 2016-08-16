@@ -1,0 +1,28 @@
+{
+  "name": "glucose",
+  "description": "Sugar coat option.",
+  "main": "glucose.js",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sugar",
+    "coat",
+    "option",
+    "glucose"
+  ],
+  "homepage": "https://github.com/volkovasystems/glucose",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zelf": "^0.0.0",
+    "harden": "^0.3.3",
+    "called": "^0.1.0"
+  }
+}
