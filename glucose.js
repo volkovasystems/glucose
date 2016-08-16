@@ -91,6 +91,8 @@ var glucose = function glucose( option ){
 			}
 		@end-meta-configuration
 	*/
+	
+	option = option || { };
 
 	if( typeof option != "object" ){
 		throw new Error( "invalid option" );
