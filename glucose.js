@@ -83,6 +83,8 @@ if( typeof window != "undefined" &&
 	throw new Error( "zelf is not defined" );
 }
 
+harden( "COATED", "coated" );
+
 var glucose = function glucose( option ){
 	/*;
 		@meta-configuration:
@@ -91,12 +93,18 @@ var glucose = function glucose( option ){
 			}
 		@end-meta-configuration
 	*/
-	
+
 	option = option || { };
 
 	if( typeof option != "object" ){
 		throw new Error( "invalid option" );
 	}
+
+	if( option.COATED === COATED ){
+		return option;
+	}
+
+	harden( "COATED", COATED, option );
 
 	harden( "cache", option.cache || { }, option );
 	harden( "self", option.self || zelf( this ), option );
@@ -112,8 +120,6 @@ var glucose = function glucose( option ){
 			return option.cache[ name ] = value;
 		}, option );
 	}
-
-	option.callback = called.bind( this )( option.callback );
 
 	return option;
 };
