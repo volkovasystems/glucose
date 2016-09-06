@@ -121,6 +121,18 @@ var glucose = function glucose( option ){
 		}, option );
 	}
 
+	//: Prepare some standard conventional properties.
+	option.factor = option.factor || [ ];
+	option.identity = option.identity || { };
+
+	option.setting = option.setting || { };
+	option.query = option.query || { };
+	option.pagination = option.pagination || { };
+
+	option.data = option.data || { };
+	option.list = option.list || [ ];
+	option.element = option.element || { };
+
 	return option;
 };
 
