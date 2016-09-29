@@ -43,10 +43,8 @@
 
 	@module-documentation:
 		Adds default self, and cache.
-
 		A hidden get and set function for manipulating cache will be
 			embedded on this object.
-
 		Bound the glucose to pass the needed context for the self property.
 	@end-module-documentation
 
@@ -107,6 +105,7 @@ var glucose = function glucose( option ){
 	harden( "COATED", COATED, option );
 
 	harden( "cache", option.cache || { }, option );
+
 	harden( "self", option.self || zelf( this ), option );
 
 	if( typeof option.get != "function" ){
@@ -117,7 +116,9 @@ var glucose = function glucose( option ){
 
 	if( typeof option.set != "function" ){
 		harden( "set", function set( name, value ){
-			return option.cache[ name ] = value;
+			option.cache[ name ] = value;
+
+			return option;
 		}, option );
 	}
 
