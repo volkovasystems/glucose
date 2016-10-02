@@ -133,6 +133,7 @@ var glucose = function glucose( option ){
 	option.data = option.data || { };
 	option.list = option.list || [ ];
 	option.element = option.element || { };
+	option.array = option.array || { };
 
 	return option;
 };
