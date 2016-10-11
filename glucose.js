@@ -122,6 +122,16 @@ var glucose = function glucose( option ){
 		}, option );
 	}
 
+	if( typeof option.clear != "function" ){
+		harden( "clear", function clear( ){
+			for( let property in option.cache ){
+				delete option.cache[ property ];
+			}
+
+			return option;
+		}, option );
+	}
+
 	//: Prepare some standard conventional properties.
 	option.factor = option.factor || [ ];
 	option.identity = option.identity || { };
