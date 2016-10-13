@@ -134,7 +134,12 @@ var glucose = function glucose( option ){
 
 	if( typeof option.mix != "function" ){
 		harden( "mix", function mix( choice ){
-			if( typeof choice.cache == "object" ){
+			if( typeof choice == "object" &&
+				choice !== null &&
+				choice.COATED == COATED &&
+				typeof choice.cache == "object" &&
+				Object.keys( choice.cache ).length )
+			{
 				for( let property in choice.cache ){
 					option.cache[ property ] = choice.cache[ property ];
 				}
