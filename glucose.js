@@ -132,6 +132,18 @@ var glucose = function glucose( option ){
 		}, option );
 	}
 
+	if( typeof option.mix != "function" ){
+		harden( "mix", function mix( choice ){
+			if( typeof choice.cache == "object" ){
+				for( let property in choice.cache ){
+					option.cache[ property ] = choice.cache[ property ];
+				}
+			}
+
+			return option;
+		}, option );
+	}
+
 	//: Prepare some standard conventional properties.
 	option.factor = option.factor || [ ];
 	option.identity = option.identity || { };
