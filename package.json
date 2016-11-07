@@ -1,6 +1,6 @@
 {
   "name": "glucose",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Sugar coat option.",
   "main": "glucose.js",
   "scripts": {
@@ -23,8 +23,10 @@
   },
   "homepage": "https://github.com/volkovasystems/glucose#readme",
   "dependencies": {
-    "called": "^0.1.2",
-    "harden": "^0.3.5",
-    "zelf": "0.0.4"
+    "called": "^0.2.0",
+    "harden": "^0.4.0",
+    "protype": "0.0.0",
+    "truly": "^0.1.0",
+    "zelf": "^0.1.0"
   }
 }

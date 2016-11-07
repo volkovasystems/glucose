@@ -43,8 +43,7 @@
 
 	@module-documentation:
 		Adds default self, and cache.
-		A hidden get and set function for manipulating cache will be
-			embedded on this object.
+		A hidden get and set function for manipulating cache will be embedded on this object.
 		Bound the glucose to pass the needed context for the self property.
 	@end-module-documentation
 
@@ -52,38 +51,44 @@
 		{
 			"called": "called",
 			"harden": "harden",
+			"protype": "protype",
+			"truly": "truly",
 			"zelf": "zelf"
 		}
 	@end-include
 */
 
-if( typeof window == "undefined" ){
+if( typeof require == "function" ){
 	var called = require( "called" );
 	var harden = require( "harden" );
+	var protype = require( "protype" );
+	var truly = require( "truly" );
 	var zelf = require( "zelf" );
 }
 
-if( typeof window != "undefined" &&
-	!( "called" in window ) )
-{
+if( typeof window != "undefined" && !( "called" in window ) ){
 	throw new Error( "called is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "harden" in window ) )
-{
+if( typeof window != "undefined" && !( "harden" in window ) ){
 	throw new Error( "harden is not defined" );
 }
 
-if( typeof window != "undefined" &&
-	!( "zelf" in window ) )
-{
+if( typeof window != "undefined" && !( "protype" in window ) ){
+	throw new Error( "protype is not defined" );
+}
+
+if( typeof window != "undefined" && !( "truly" in window ) ){
+	throw new Error( "truly is not defined" );
+}
+
+if( typeof window != "undefined" && !( "zelf" in window ) ){
 	throw new Error( "zelf is not defined" );
 }
 
 harden( "COATED", "coated" );
 
-var glucose = function glucose( option ){
+this.glucose = function glucose( option ){
 	/*;
 		@meta-configuration:
 			{
@@ -94,7 +99,7 @@ var glucose = function glucose( option ){
 
 	option = option || { };
 
-	if( typeof option != "object" ){
+	if( !protype( option, OBJECT ) ){
 		throw new Error( "invalid option" );
 	}
 
@@ -102,51 +107,55 @@ var glucose = function glucose( option ){
 		return option;
 	}
 
-	harden( "COATED", COATED, option );
+	let hardOption = harden.bind( option );
 
-	harden( "cache", option.cache || { }, option );
+	hardOption( "COATED", COATED );
 
-	harden( "self", option.self || zelf( this ), option );
+	hardOption( "cache", option.cache || { } );
 
-	if( typeof option.get != "function" ){
-		harden( "get", function get( name ){
-			return option.cache[ name ];
-		}, option );
+	hardOption( "self", option.self || zelf( this ) );
+
+	if( !protype( option.get, FUNCTION ) ){
+		hardOption( "get", function get( name ){ return option.cache[ name ]; } );
 	}
 
-	if( typeof option.set != "function" ){
-		harden( "set", function set( name, value ){
+	if( !protype( option.set, FUNCTION ) ){
+		hardOption( "set", function set( name, value ){
 			option.cache[ name ] = value;
 
 			return option;
-		}, option );
+		} );
 	}
 
-	if( typeof option.clear != "function" ){
-		harden( "clear", function clear( ){
+	if( !protype( option.clear, FUNCTION ) ){
+		hardOption( "clear", function clear( ){
 			for( let property in option.cache ){
 				delete option.cache[ property ];
 			}
 
 			return option;
-		}, option );
+		} );
 	}
 
-	if( typeof option.mix != "function" ){
-		harden( "mix", function mix( choice ){
-			if( typeof choice == "object" &&
-				choice !== null &&
+	if( !protype( option.mix, FUNCTION ) ){
+		hardOption( "mix", function mix( choice ){
+			if( protype( choice, OBJECT ) &&
+				truly( choice ) &&
 				choice.COATED == COATED &&
-				typeof choice.cache == "object" &&
+				protype( choice.cache, OBJECT ) &&
 				Object.keys( choice.cache ).length )
 			{
 				for( let property in choice.cache ){
 					option.cache[ property ] = choice.cache[ property ];
 				}
+
+				for( let property  in option.cache ){
+					choice.cache[ property ] = option.cache[ property ];
+				}
 			}
 
 			return option;
-		}, option );
+		} );
 	}
 
 	//: Prepare some standard conventional properties.
@@ -162,9 +171,12 @@ var glucose = function glucose( option ){
 	option.element = option.element || { };
 	option.array = option.array || { };
 
+	option.scope = option.scope || [ ];
+	option.permission = option.permission || [ ];
+
 	return option;
 };
 
-if( typeof module != "undefined" ){
-	module.exports = glucose;
+if( typeof module != "undefined" && typeof module.exports != "undefined" ){
+	module.exports = this.glucose;
 }
