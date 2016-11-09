@@ -88,7 +88,7 @@ if( typeof window != "undefined" && !( "zelf" in window ) ){
 
 harden( "COATED", "coated" );
 
-this.glucose = function glucose( option ){
+var glucose = function glucose( option ){
 	/*;
 		@meta-configuration:
 			{
@@ -178,5 +178,5 @@ this.glucose = function glucose( option ){
 };
 
 if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = this.glucose;
+	module.exports = glucose;
 }

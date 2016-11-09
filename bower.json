@@ -1,6 +1,6 @@
 {
   "name": "glucose",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Sugar coat option.",
   "main": "glucose.js",
   "authors": [
@@ -22,10 +22,10 @@
     "tests"
   ],
   "dependencies": {
-    "called": "^0.2.0",
-    "truly": "^0.1.0",
-    "harden": "^0.4.0",
-    "protype": "^0.0.0",
-    "zelf": "^0.1.0"
+    "called": "^0.3.0",
+    "harden": "^0.6.0",
+    "protype": "^0.2.0",
+    "truly": "^0.2.0",
+    "zelf": "^0.2.0"
   }
 }
