@@ -34,6 +34,9 @@
 			"file": "glucose.js",
 			"module": "glucose",
 			"author": "Richeve S. Bebedor",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/glucose.git",
 			"test": "glucose-test.js",
@@ -58,37 +61,15 @@
 	@end-include
 */
 
-if( typeof require == "function" ){
-	var called = require( "called" );
-	var harden = require( "harden" );
-	var protype = require( "protype" );
-	var truly = require( "truly" );
-	var zelf = require( "zelf" );
-}
-
-if( typeof window != "undefined" && !( "called" in window ) ){
-	throw new Error( "called is not defined" );
-}
-
-if( typeof window != "undefined" && !( "harden" in window ) ){
-	throw new Error( "harden is not defined" );
-}
-
-if( typeof window != "undefined" && !( "protype" in window ) ){
-	throw new Error( "protype is not defined" );
-}
-
-if( typeof window != "undefined" && !( "truly" in window ) ){
-	throw new Error( "truly is not defined" );
-}
-
-if( typeof window != "undefined" && !( "zelf" in window ) ){
-	throw new Error( "zelf is not defined" );
-}
+const called = require( "called" );
+const harden = require( "harden" );
+const protype = require( "protype" );
+const truly = require( "truly" );
+const zelf = require( "zelf" );
 
 harden( "COATED", "coated" );
 
-var glucose = function glucose( option ){
+const glucose = function glucose( option ){
 	/*;
 		@meta-configuration:
 			{
@@ -177,6 +158,4 @@ var glucose = function glucose( option ){
 	return option;
 };
 
-if( typeof module != "undefined" && typeof module.exports != "undefined" ){
-	module.exports = glucose;
-}
+module.exports = glucose;
