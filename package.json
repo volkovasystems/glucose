@@ -1,10 +1,13 @@
 {
   "name": "glucose",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Sugar coat option.",
   "main": "glucose.js",
+  "support": "glucose.support.js",
+  "deploy": "glucose.deploy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel glucose.js -o glucose.support.js && webpack",
+    "test": "mocha glucose-test.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,7 @@
   ],
   "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
   "contributors": [
-      "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
@@ -26,10 +29,10 @@
   },
   "homepage": "https://github.com/volkovasystems/glucose#readme",
   "dependencies": {
-    "called": "^0.4.0",
-    "harden": "^0.7.0",
-    "protype": "^0.4.0",
-    "truly": "^0.3.0",
-    "zelf": "^0.3.0"
+    "called": "^0.5.0",
+    "harden": "^0.12.0",
+    "protype": "^0.7.0",
+    "truly": "^0.5.0",
+    "zelf": "^0.4.0"
   }
 }
