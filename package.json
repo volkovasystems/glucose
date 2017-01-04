@@ -1,6 +1,6 @@
 {
   "name": "glucose",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Sugar coat option.",
   "main": "glucose.js",
   "support": "glucose.support.js",
@@ -29,10 +29,19 @@
   },
   "homepage": "https://github.com/volkovasystems/glucose#readme",
   "dependencies": {
+    "babel-runtime": "^6.20.0",
     "called": "^0.5.0",
     "harden": "^0.12.0",
     "protype": "^0.7.0",
     "truly": "^0.5.0",
     "zelf": "^0.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-latest": "^6.16.0",
+    "source-map-loader": "^0.1.5",
+    "webpack": "^1.14.0"
   }
 }
