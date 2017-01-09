@@ -45,29 +45,27 @@
 	@end-module-configuration
 
 	@module-documentation:
-		Adds default self, and cache.
-		A hidden get and set function for manipulating cache will be embedded on this object.
-		Bound the glucose to pass the needed context for the self property.
+		Sugar coat option.
+
+		Wraps the option object with an Option based instance.
 	@end-module-documentation
 
 	@include:
 		{
-			"called": "called",
-			"harden": "harden",
+			"clazof": "clazof",
+			"kein": "kein",
 			"protype": "protype",
-			"truly": "truly",
 			"zelf": "zelf"
 		}
 	@end-include
 */
 
-const called = require( "called" );
-const harden = require( "harden" );
+const clazof = require( "clazof" );
+const kein = require( "kein" );
 const protype = require( "protype" );
-const truly = require( "truly" );
 const zelf = require( "zelf" );
 
-harden( "COATED", "coated" );
+const Option = require( "./option.js" );
 
 const glucose = function glucose( option ){
 	/*;
@@ -84,78 +82,15 @@ const glucose = function glucose( option ){
 		throw new Error( "invalid option" );
 	}
 
-	if( option.COATED === COATED ){
+	if( clazof( option, Option ) ){
 		return option;
 	}
 
-	let hardOption = harden.bind( option );
-
-	hardOption( "COATED", COATED );
-
-	hardOption( "cache", option.cache || { } );
-
-	hardOption( "self", option.self || zelf( this ) );
-
-	if( !protype( option.get, FUNCTION ) ){
-		hardOption( "get", function get( name ){ return option.cache[ name ]; } );
+	if( !kein( option, "self" ) ){
+		option.self = zelf( this );
 	}
 
-	if( !protype( option.set, FUNCTION ) ){
-		hardOption( "set", function set( name, value ){
-			option.cache[ name ] = value;
-
-			return option;
-		} );
-	}
-
-	if( !protype( option.clear, FUNCTION ) ){
-		hardOption( "clear", function clear( ){
-			for( let property in option.cache ){
-				delete option.cache[ property ];
-			}
-
-			return option;
-		} );
-	}
-
-	if( !protype( option.mix, FUNCTION ) ){
-		hardOption( "mix", function mix( choice ){
-			if( protype( choice, OBJECT ) &&
-				truly( choice ) &&
-				choice.COATED == COATED &&
-				protype( choice.cache, OBJECT ) &&
-				Object.keys( choice.cache ).length )
-			{
-				for( let property in choice.cache ){
-					option.cache[ property ] = choice.cache[ property ];
-				}
-
-				for( let property  in option.cache ){
-					choice.cache[ property ] = option.cache[ property ];
-				}
-			}
-
-			return option;
-		} );
-	}
-
-	//: Prepare some standard conventional properties.
-	option.factor = option.factor || [ ];
-	option.identity = option.identity || { };
-
-	option.setting = option.setting || { };
-	option.query = option.query || { };
-	option.pagination = option.pagination || { };
-
-	option.data = option.data || { };
-	option.list = option.list || [ ];
-	option.element = option.element || { };
-	option.array = option.array || { };
-
-	option.scope = option.scope || [ ];
-	option.permission = option.permission || [ ];
-
-	return option;
+	return Option( option );
 };
 
 module.exports = glucose;
