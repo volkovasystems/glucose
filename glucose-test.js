@@ -1,3 +1,3 @@
 const glucose = require( "./glucose.js" );
 
-console.log( glucose( { "name": "simple" } ) )
+console.log( JSON.stringify( glucose( { "hello": "world" } ) ) )

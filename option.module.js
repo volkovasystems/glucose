@@ -66,21 +66,16 @@
 
 const clazof = require( "clazof" );
 const diatom = require( "diatom" );
-const falzy = require( "falzy" );
 const falze = require( "falze" );
+const falzy = require( "falzy" );
 const harden = require( "harden" );
+const proplist = require( "proplist" );
 const protype = require( "protype" );
 const stuffed = require( "stuffed" );
 const transpher = require( "transpher" );
 const truly = require( "truly" );
 
-//: @support-module:
-	//: @reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
-	Array.prototype.every||(Array.prototype.every=function(a,b){"use strict";var c,d;
-	if(null==this)throw new TypeError("this is null or not defined");var e=Object(this),f=e.length>>>0;
-	if("function"!=typeof a)throw new TypeError;for(arguments.length>1&&(c=b),d=0;d<f;){var g;
-	if(d in e){g=e[d];var h=a.call(c,g,d,e);if(!h)return!1}d++}return!0});
-//: @end-support-module
+harden( "COATED", Symbol( "coated" ) );
 
 const Option = diatom( "Option" );
 
@@ -110,6 +105,13 @@ Option.prototype.initialize = function initialize( option ){
 			}
 		@end-meta-configuration
 	*/
+	if( option.COATED === COATED ){
+		transpher( option, this );
+
+		return this;
+	}
+
+	harden( "COATED", COATED, this );
 
 	harden( "self", option.self, this );
 
@@ -254,12 +256,24 @@ Option.prototype.empty = function empty( property ){
 			.filter( ( property ) => {
 				return ( property != "self" &&
 					property != "cache" &&
-					protype( this[ property ], OBJECT ) );
+					protype( this[ property ], OBJECT, STRING, NUMBER, BOOLEAN, SYMBOL ) );
 			} )
 			.every( ( property ) => { return falze( this[ property ] ); } );
 	}
 
 	return this;
+};
+
+Option.prototype.toJSON = function toJSON( ){
+	let object = { };
+
+	proplist( this )
+		.filter( ( property ) => { return property.enumerable; } )
+		.forEach( ( { property, value } ) => {
+			object[ property ] = value;
+		} );
+
+	return object;
 };
 
 module.exports = Option;
