@@ -11,6 +11,7 @@ proplist \
 stuffed \
 transpher \
 truly \
+truu \
 zelf \
 --save && \
 yarn add \
@@ -33,5 +34,6 @@ proplist \
 stuffed \
 transpher \
 truly \
+truu \
 zelf \
 --save

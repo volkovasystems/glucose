@@ -59,7 +59,8 @@
 			"protype": "protype",
 			"stuffed": "stuffed",
 			"transpher": "transpher",
-			"truly": "truly"
+			"truly": "truly",
+			"truu": "truu"
 		}
 	@end-include
 */
@@ -74,6 +75,7 @@ const protype = require( "protype" );
 const stuffed = require( "stuffed" );
 const transpher = require( "transpher" );
 const truly = require( "truly" );
+const truu = require( "truu" );
 
 harden( "COATED", Symbol( "coated" ) );
 
@@ -117,25 +119,7 @@ Option.prototype.initialize = function initialize( option ){
 
 	harden( "cache", option.cache || { }, this );
 
-	/*;
-		These are standard conventional prooperties.
-	*/
-	this.factor = option.factor || [ ];
-	this.identity = option.identity || { };
-
-	this.setting = option.setting || { };
-	this.query = option.query || { };
-	this.pagination = option.pagination || { };
-
-	this.data = option.data || { };
-	this.list = option.list || [ ];
-	this.element = option.element || { };
-	this.array = option.array || { };
-
-	this.scope = option.scope || [ ];
-	this.permission = option.permission || [ ];
-
-	transpher( option, this );
+	this.transfer( option );
 
 	return this;
 };
@@ -235,6 +219,40 @@ Option.prototype.mix = function mix( choice ){
 	return this;
 };
 
+Option.prototype.transfer = function transfer( option ){
+	/*;
+		@meta-configuration:
+			{
+				"option:required": Option
+			}
+		@end-meta-configuration
+	*/
+
+	if( truly( option ) && protype( option, OBJECT ) ){
+		/*;
+			These are standard conventional prooperties.
+		*/
+		this.factor = truu( option.factor )? option.factor : [ ];
+		this.identity = truu( option.identity )? option.identity : { };
+
+		this.setting = truu( option.setting )? option.setting : { };
+		this.query = truu( option.query )? option.query : { };
+		this.pagination = truu( option.pagination )? option.pagination : { };
+
+		this.data = truu( option.data )? option.data : { };
+		this.list = truu( option.list )? option.list : [ ];
+		this.element = truu( option.element )? option.element : { };
+		this.array = truu( option.array )? option.array : { };
+
+		this.scope = truu( option.scope )? option.scope : [ ];
+		this.permission = truu( option.permission )? option.permission : [ ];
+
+		transpher( option, this );
+	}
+
+	return this;
+};
+
 Option.prototype.empty = function empty( property ){
 	/*;
 		@meta-configuration:
@@ -255,7 +273,6 @@ Option.prototype.empty = function empty( property ){
 		return Object.getOwnPropertyNames( this )
 			.filter( ( property ) => {
 				return ( property != "self" &&
-					property != "cache" &&
 					protype( this[ property ], OBJECT, STRING, NUMBER, BOOLEAN, SYMBOL ) );
 			} )
 			.every( ( property ) => { return falze( this[ property ] ); } );

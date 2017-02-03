@@ -1,6 +1,6 @@
 {
   "name": "glucose",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Sugar coat option.",
   "main": "glucose.js",
   "support": "glucose.support.js",
@@ -41,6 +41,7 @@
     "stuffed": "^0.4.0",
     "transpher": "^0.5.0",
     "truly": "^0.9.0",
+    "truu": "^0.7.0",
     "zelf": "^0.6.0"
   },
   "devDependencies": {
