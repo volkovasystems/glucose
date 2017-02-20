@@ -36,4 +36,5 @@ transpher \
 truly \
 truu \
 zelf \
---save
+--save \
+--force-latest
