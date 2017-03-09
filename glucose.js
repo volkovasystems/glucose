@@ -84,7 +84,7 @@ const glucose = function glucose( option ){
 		return option;
 	}
 
-	if( !kein( option, "self" ) ){
+	if( !kein( "self", option ) ){
 		option.self = zelf( this );
 	}
 
