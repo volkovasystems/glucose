@@ -1049,8 +1049,8 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
 debug@^2.1.1, debug@^2.2.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.1.tgz#79855090ba2c4e3115cc7d8769491d58f0491351"
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.2.tgz#dfa96a861ee9b8c2f29349b3bcc41aa599a71e0f"
   dependencies:
     ms "0.7.2"
 
@@ -2973,6 +2973,14 @@ wichevr@^0.4.0:
     babel-runtime "^6.23.0"
     raze "^0.22.0"
     truly "^0.15.0"
+
+wichis@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/wichis/-/wichis-0.7.0.tgz#a8dc953da2c2582853c86234058e2e28a5b60518"
+  dependencies:
+    babel-runtime "^6.23.0"
+    raze "^0.22.0"
+    truu "^0.19.0"
 
 wide-align@^1.1.0:
   version "1.1.0"

@@ -60,7 +60,8 @@
               			"stuffed": "stuffed",
               			"transpher": "transpher",
               			"truly": "truly",
-              			"truu": "truu"
+              			"wichevr": "wichevr",
+              			"wichis": "wichis"
               		}
               	@end-include
               */var _getOwnPropertyNames = require("babel-runtime/core-js/object/get-own-property-names");var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -75,7 +76,8 @@ var protype = require("protype");
 var stuffed = require("stuffed");
 var transpher = require("transpher");
 var truly = require("truly");
-var truu = require("truu");
+var wichevr = require("wichevr");
+var wichis = require("wichis");
 
 harden("COATED", (0, _symbol2.default)("coated"));
 
@@ -117,7 +119,7 @@ Option.prototype.initialize = function initialize(option) {
 
 	harden("self", option.self, this);
 
-	harden("cache", option.cache || {}, this);
+	harden("cache", wichevr(option.cache, {}), this);
 
 	this.transfer(option);
 
@@ -232,20 +234,20 @@ Option.prototype.transfer = function transfer(option) {
 		/*;
                                                 	These are standard conventional prooperties.
                                                 */
-		this.factor = truu(option.factor) ? option.factor : [];
-		this.identity = truu(option.identity) ? option.identity : {};
+		this.factor = wichis(option.factor, []);
+		this.identity = wichis(option.identity, {});
 
-		this.setting = truu(option.setting) ? option.setting : {};
-		this.query = truu(option.query) ? option.query : {};
-		this.pagination = truu(option.pagination) ? option.pagination : {};
+		this.setting = wichis(option.setting, {});
+		this.query = wichis(option.query, {});
+		this.pagination = wichis(option.pagination, {});
 
-		this.data = truu(option.data) ? option.data : {};
-		this.list = truu(option.list) ? option.list : [];
-		this.element = truu(option.element) ? option.element : {};
-		this.array = truu(option.array) ? option.array : {};
+		this.data = wichis(option.data, {});
+		this.list = wichis(option.list, []);
+		this.element = wichis(option.element, {});
+		this.array = wichis(option.array, {});
 
-		this.scope = truu(option.scope) ? option.scope : [];
-		this.permission = truu(option.permission) ? option.permission : [];
+		this.scope = wichis(option.scope, []);
+		this.permission = wichis(option.permission, []);
 
 		transpher(option, this);
 	}

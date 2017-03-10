@@ -60,7 +60,8 @@
 			"stuffed": "stuffed",
 			"transpher": "transpher",
 			"truly": "truly",
-			"truu": "truu"
+			"wichevr": "wichevr",
+			"wichis": "wichis"
 		}
 	@end-include
 */
@@ -75,7 +76,8 @@ const protype = require( "protype" );
 const stuffed = require( "stuffed" );
 const transpher = require( "transpher" );
 const truly = require( "truly" );
-const truu = require( "truu" );
+const wichevr = require( "wichevr" );
+const wichis = require( "wichis" );
 
 harden( "COATED", Symbol( "coated" ) );
 
@@ -117,7 +119,7 @@ Option.prototype.initialize = function initialize( option ){
 
 	harden( "self", option.self, this );
 
-	harden( "cache", option.cache || { }, this );
+	harden( "cache", wichevr( option.cache, { } ), this );
 
 	this.transfer( option );
 
@@ -232,20 +234,20 @@ Option.prototype.transfer = function transfer( option ){
 		/*;
 			These are standard conventional prooperties.
 		*/
-		this.factor = truu( option.factor )? option.factor : [ ];
-		this.identity = truu( option.identity )? option.identity : { };
+		this.factor = wichis( option.factor, [ ] );
+		this.identity = wichis( option.identity, { } );
 
-		this.setting = truu( option.setting )? option.setting : { };
-		this.query = truu( option.query )? option.query : { };
-		this.pagination = truu( option.pagination )? option.pagination : { };
+		this.setting = wichis( option.setting, { } );
+		this.query = wichis( option.query, { } );
+		this.pagination = wichis( option.pagination, { } );
 
-		this.data = truu( option.data )? option.data : { };
-		this.list = truu( option.list )? option.list : [ ];
-		this.element = truu( option.element )? option.element : { };
-		this.array = truu( option.array )? option.array : { };
+		this.data = wichis( option.data, { } );
+		this.list = wichis( option.list, [ ] );
+		this.element = wichis( option.element, { } );
+		this.array = wichis( option.array, { } );
 
-		this.scope = truu( option.scope )? option.scope : [ ];
-		this.permission = truu( option.permission )? option.permission : [ ];
+		this.scope = wichis( option.scope, [ ] );
+		this.permission = wichis( option.permission, [ ] );
 
 		transpher( option, this );
 	}

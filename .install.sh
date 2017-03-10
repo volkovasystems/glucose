@@ -11,7 +11,8 @@ proplist \
 stuffed \
 transpher \
 truly \
-truu \
+wichevr \
+wichis \
 zelf \
 --save && \
 yarn add \
@@ -34,7 +35,8 @@ proplist \
 stuffed \
 transpher \
 truly \
-truu \
+wichevr \
+wichis \
 zelf \
 --save \
 --force-latest
