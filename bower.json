@@ -1,6 +1,6 @@
 {
   "name": "glucose",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Sugar coat option.",
   "main": "glucose.deploy.js",
   "support": "glucose.support.js",
@@ -24,19 +24,19 @@
     "tests"
   ],
   "dependencies": {
-    "clazof": "^0.16.0",
-    "diatom": "^0.16.0",
-    "falze": "^0.17.0",
-    "falzy": "^0.16.0",
-    "harden": "^0.19.0",
-    "kein": "^0.15.0",
-    "protype": "^0.20.0",
-    "proplist": "^0.16.0",
-    "stuffed": "^0.18.0",
-    "transpher": "^0.13.0",
-    "truly": "^0.16.0",
-    "wichevr": "^0.5.0",
-    "wichis": "^0.8.0",
-    "zelf": "^0.10.0"
+    "clazof": "^0.18.0",
+    "diatom": "^0.17.0",
+    "falze": "^0.19.0",
+    "falzy": "^0.17.0",
+    "harden": "^0.21.0",
+    "kein": "^0.16.0",
+    "protype": "^0.21.0",
+    "proplist": "^0.17.0",
+    "stuffed": "^0.19.0",
+    "transpher": "^0.14.0",
+    "truly": "^0.17.0",
+    "wichevr": "^0.6.0",
+    "wichis": "^0.10.0",
+    "zelf": "^0.11.0"
   }
 }
