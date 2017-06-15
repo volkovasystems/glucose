@@ -33,7 +33,8 @@
 			"module": "glucose",
 			"author": "Richeve S. Bebedor",
 			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+				"Vinse Vinalon <vinsevinalon@gmail.com>"
 			],
 			"eMail": "richeve.bebedor@gmail.com",
 			"repository": "https://github.com/volkovasystems/glucose.git",

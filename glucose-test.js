@@ -17,4 +17,6 @@ JSON.stringify( {
 	"hello": "world"
 } ) );
 
+assert.equal( typeof glucose( { "hello": "world" } ), "object", "should return 'object'" );
+
 console.log( "ok" );
