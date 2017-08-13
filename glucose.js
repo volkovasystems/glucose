@@ -53,7 +53,6 @@
 		{
 			"clazof": "clazof",
 			"kein": "kein",
-			"protype": "protype",
 			"zelf": "zelf"
 		}
 	@end-include
@@ -61,7 +60,6 @@
 
 const clazof = require( "clazof" );
 const kein = require( "kein" );
-const protype = require( "protype" );
 const zelf = require( "zelf" );
 
 const Option = require( "./option.js" );
@@ -77,7 +75,7 @@ const glucose = function glucose( option ){
 
 	option = option || { };
 
-	if( !protype( option, OBJECT ) ){
+	if( typeof option != "object" ){
 		throw new Error( "invalid option" );
 	}
 

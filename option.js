@@ -65,7 +65,7 @@
               			"wichis": "wichis"
               		}
               	@end-include
-              */var _getOwnPropertyNames = require("babel-runtime/core-js/object/get-own-property-names");var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+              */var _getOwnPropertyNames = require("babel-runtime/core-js/object/get-own-property-names");var _getOwnPropertyNames2 = _interopRequireDefault(_getOwnPropertyNames);var _typeof2 = require("babel-runtime/helpers/typeof");var _typeof3 = _interopRequireDefault(_typeof2);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var clazof = require("clazof");
 var diatom = require("diatom");
@@ -136,7 +136,7 @@ Option.prototype.get = function get(name) {
                                            	@end-meta-configuration
                                            */
 
-	if (falzy(name) || !protype(name, STRING)) {
+	if (falzy(name) || typeof name != "string") {
 		throw new Error("invalid name");
 	}
 
@@ -153,7 +153,7 @@ Option.prototype.set = function set(name, value) {
                                                   	@end-meta-configuration
                                                   */
 
-	if (falzy(name) || !protype(name, STRING)) {
+	if (falzy(name) || typeof name != "string") {
 		throw new Error("invalid name");
 	}
 
@@ -175,7 +175,7 @@ Option.prototype.clear = function clear(name) {
                                                	@end-meta-configuration
                                                */
 
-	if (truly(name) && !protype(name, STRING)) {
+	if (truly(name) && typeof name != "string") {
 		throw new Error("invalid name");
 	}
 
@@ -205,9 +205,9 @@ Option.prototype.mix = function mix(choice) {
 	}
 
 	if (truly(choice) &&
-	protype(choice, OBJECT) &&
+	(typeof choice === "undefined" ? "undefined" : (0, _typeof3.default)(choice)) == "object" &&
 	clazof(choice, Option) &&
-	protype(choice.cache, OBJECT) &&
+	(0, _typeof3.default)(choice.cache) == "object" &&
 	stuffed(choice.cache))
 	{
 		for (var property in choice.cache) {
@@ -231,10 +231,10 @@ Option.prototype.transfer = function transfer(option) {
                                                        	@end-meta-configuration
                                                        */
 
-	if (truly(option) && protype(option, OBJECT)) {
+	if (truly(option) && (typeof option === "undefined" ? "undefined" : (0, _typeof3.default)(option)) == "object") {
 		/*;
-                                                	These are standard conventional prooperties.
-                                                */
+                                                                                                                  	These are standard conventional prooperties.
+                                                                                                                  */
 		this.factor = wichis(option.factor, []);
 		this.identity = wichis(option.identity, {});
 
@@ -265,7 +265,7 @@ Option.prototype.empty = function empty(property) {var _this = this;
                                                                      	@end-meta-configuration
                                                                      */
 
-	if (truly(property) && !protype(property, STRING)) {
+	if (truly(property) && typeof property != "string") {
 		throw new Error("invalid property");
 	}
 

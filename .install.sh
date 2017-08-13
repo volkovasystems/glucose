@@ -6,7 +6,6 @@ falze \
 falzy \
 harden \
 kein \
-protype \
 proplist \
 stuffed \
 transpher \
@@ -30,7 +29,6 @@ falze \
 falzy \
 harden \
 kein \
-protype \
 proplist \
 stuffed \
 transpher \

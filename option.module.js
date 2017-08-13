@@ -136,7 +136,7 @@ Option.prototype.get = function get( name ){
 		@end-meta-configuration
 	*/
 
-	if( falzy( name ) || !protype( name, STRING ) ){
+	if( falzy( name ) || typeof name != "string" ){
 		throw new Error( "invalid name" );
 	}
 
@@ -153,7 +153,7 @@ Option.prototype.set = function set( name, value ){
 		@end-meta-configuration
 	*/
 
-	if( falzy( name ) || !protype( name, STRING ) ){
+	if( falzy( name ) || typeof name != "string" ){
 		throw new Error( "invalid name" );
 	}
 
@@ -175,7 +175,7 @@ Option.prototype.clear = function clear( name ){
 		@end-meta-configuration
 	*/
 
-	if( truly( name ) && !protype( name, STRING ) ){
+	if( truly( name ) && typeof name != "string" ){
 		throw new Error( "invalid name" );
 	}
 
@@ -205,9 +205,9 @@ Option.prototype.mix = function mix( choice ){
 	}
 
 	if( truly( choice ) &&
-		protype( choice, OBJECT ) &&
+		typeof choice == "object" &&
 		clazof( choice, Option ) &&
-		protype( choice.cache, OBJECT ) &&
+		typeof choice.cache == "object" &&
 		stuffed( choice.cache ) )
 	{
 		for( let property in choice.cache ){
@@ -231,7 +231,7 @@ Option.prototype.transfer = function transfer( option ){
 		@end-meta-configuration
 	*/
 
-	if( truly( option ) && protype( option, OBJECT ) ){
+	if( truly( option ) && typeof option == "object" ){
 		/*;
 			These are standard conventional prooperties.
 		*/
@@ -265,7 +265,7 @@ Option.prototype.empty = function empty( property ){
 		@end-meta-configuration
 	*/
 
-	if( truly( property ) && !protype( property, STRING ) ){
+	if( truly( property ) && typeof property != "string" ){
 		throw new Error( "invalid property" );
 	}
 
